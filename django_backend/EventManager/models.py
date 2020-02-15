@@ -1,23 +1,17 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
 
 class Events(models.Model):
-    title = models.CharField()
+    title = models.CharField(max_length=255)
     time = models.DateTimeField()
-    location = models.CharField()
-    description = models.TextField
-    picture = models.models.FileField(upload_to="images/")
-    registration = models.URLField()
+    location = models.CharField(max_length=255)
+    picture = models.FileField(upload_to="images/")
     organizerEmail = models.EmailField()
-    deadline = models.DateTimeField()
-    tags = models.ArrayField(models.models.CharField())
-    faculty = models.CharField()
-    onCampus = models.BooleanField()
-    hasFood = models.BooleanField()
-    isPrice = models.BooleanField()
-
-class Tags(models.Model):
-    tag = models.CharField()
-
-class Faculty(models.Model):
-    faculty = models.CharField()
+    
+    description = models.TextField(null=True)
+    registration = models.URLField(null=True)
+    deadline = models.DateTimeField(null=True)
+    eventType = models.CharField(max_length=255, null=True)
+    faculty = models.CharField(max_length=255, null=True)
+    onCampus = models.BooleanField(null=True)
+    hasFood = models.BooleanField(null=True)
+    isPrice = models.BooleanField(null=True)
