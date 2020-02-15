@@ -4,7 +4,8 @@ class Events(models.Model):
     title = models.CharField(max_length=255)
     time = models.DateTimeField()
     location = models.CharField(max_length=255)
-    picture = models.FileField(upload_to="images/")
+# TODO
+    picture = models.ImageField(upload_to="images/", null=True) 
     organizerEmail = models.EmailField()
 
     description = models.TextField(null=True)
