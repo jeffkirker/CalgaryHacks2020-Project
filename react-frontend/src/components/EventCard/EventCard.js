@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '100%',
   },
   media: {
-    height: 50,
+    // height: 50,
     paddingTop: '56.25%', // 16:9
     // maxHeight: '10%'
   },

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactCardCarousel from 'react-card-carousel';
 import EventCard from '../EventCard/EventCard';
+import Container from '@material-ui/core/Container';
+
 
 class CardCarousel extends Component {
 
@@ -20,23 +22,25 @@ class CardCarousel extends Component {
 
   render() {
     return (
-      <ReactCardCarousel autoplay={ false } spread={ narrow}>
-        <div style={ CardCarousel.CARD_STYLE }>
-          <EventCard />
-        </div>
-        <div style={ CardCarousel.CARD_STYLE }>
-          <EventCard />
-        </div>
-        <div style={ CardCarousel.CARD_STYLE }>
-          <EventCard />
-        </div>
-        <div style={ CardCarousel.CARD_STYLE }>
-          <EventCard />
-        </div>
-        <div style={ CardCarousel.CARD_STYLE }>
-          <EventCard />
-        </div>
-      </ReactCardCarousel>
+      <Container>
+        <ReactCardCarousel autoplay={false} spread={"wide"} alignment={ "horizontal" }>
+          <div style={CardCarousel.CARD_STYLE}>
+            <EventCard />
+          </div>
+          <div style={CardCarousel.CARD_STYLE}>
+            <EventCard />
+          </div>
+          <div style={CardCarousel.CARD_STYLE}>
+            <EventCard />
+          </div>
+          <div style={CardCarousel.CARD_STYLE}>
+            <EventCard />
+          </div>
+          <div style={CardCarousel.CARD_STYLE}>
+            <EventCard />
+          </div>
+        </ReactCardCarousel>
+      </Container>
     );
   }
 }
