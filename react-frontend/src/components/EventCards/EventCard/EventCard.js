@@ -15,6 +15,9 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import Button from '@material-ui/core/Button';
+import Tooltip from '@material-ui/core/Tooltip';
+import SvgIcon from '@material-ui/icons/Favorite';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,7 +42,20 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     backgroundColor: red[500],
   },
+  icon: {
+    backgroundColor: red[500],
+  },
 }));
+
+var icon_size = [15, 15];
+
+function create_icon(filename, tooltip) {
+  return <Tooltip title={tooltip}>
+    <img src={require(`../../../static/icons/faculties/${filename}.png`)}
+    height={icon_size[0]} width={icon_size[1]}
+    ></img>
+  </Tooltip>;
+}
 
 export default function EventCard(props) {
   const classes = useStyles();
@@ -48,6 +64,45 @@ export default function EventCard(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  var icons = [];
+
+  if (props.hasFood) {
+    icons.push(
+      create_icon("event_types/icon_food", "event has food")
+    )
+  }
+  if (props.isFree) {
+    icons.push(
+      create_icon("event_types/icon_free", "event is free")
+    )
+  }
+  if (props.onCampus) {
+    icons.push(
+      create_icon("event_types/icon_on_campus", "event is on campus")
+    )
+  }
+
+
+  if (props.evenType == "social") {
+    icons.push(
+      create_icon("event_types/icon_social", "event is social")
+    );
+  } else if (props.eventType == "lecture") {
+    icons.push(
+      create_icon("event_types/icon_lecture", "event is a lecture")
+    );
+  }
+
+  if (props.faculty == "chemistry") {
+    icons.push(
+      create_icon("faculty/" + "chemistry", "chemistry")
+    );
+  } else if (props.faculty == "business") {
+    icons.push(
+      create_icon("faculty/" + "business", "business")
+    );
+  }
 
   return (
     <Card className={classes.root}>
@@ -76,6 +131,7 @@ export default function EventCard(props) {
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
+        {icons}
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
         </IconButton>

@@ -23,10 +23,10 @@ class App extends Component {
     // Test repos with randomly generated data
     this.state = {
       events: [
-        // { title: 'CalgaryHacks 2020', key: 'afndsj', date: "test1", location: "UofC" },
-        // { title: 'A Different Event', key: 'kfskdg', date: "test2", location: "UofC" },
-        // { title: 'A Big Event', key: 'afdagd', date: "test3", location: "UofC" },
-        // { title: 'Jeremy\'s Birthday', key: 'akjhfa', date: "test4", location: "UofC" },
+        { title: 'CalgaryHacks 2020', key: 'afndsj', date: "test1", location: "UofC" },
+        { title: 'A Different Event', key: 'kfskdg', date: "test2", location: "UofC" },
+        { title: 'A Big Event', key: 'afdagd', date: "test3", location: "UofC" },
+        { title: 'Jeremy\'s Birthday', key: 'akjhfa', date: "test4", location: "UofC" },
       ],
       showCarousel: true,
       submitForm: false,
