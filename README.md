@@ -8,6 +8,8 @@ Student life is busy. Between exams, assignments, and labs, we barely have enoug
 
 
 ## What it does
+![Screen Shot](screen_shot1.png)
+![Another Screen Shot](screen_shot2.png)
 This app allows users to crowdsource event information, pulling from any source that people are willing to read. University organized talks are great, but just as important are the hackathons, the tech meetups, the social mixers! We want the best of all worlds. Students now have a simple way to answer the question “What is going on right now?“. Just start swiping. When they find an event that they are interested in, with a hit of the button, they are directed to the appropriate registration page (Eventbrite, Facebook Events, Meetup, to name a few). When students do stumble across the hidden gems buried in posters and university websites, they can easily share it with their fellow tech enthusiasts.
 
 ## How we built it
