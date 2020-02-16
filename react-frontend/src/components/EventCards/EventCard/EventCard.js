@@ -23,8 +23,7 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '100%',
   },
   media: {
-    // height: 50,
-    //paddingTop: '56.25%', // 16:9
+
     paddingTop: '100%',
     maxHeight: '100%',
   },
@@ -62,6 +61,7 @@ export default function EventCard(props) {
         title={props.title}
         subheader={props.time}
       />
+
        <CardMedia 
        className={classes.media}
        title="Logo"
