@@ -72,11 +72,22 @@ function CardCarousel(props) {
 
   const Events = props.events.map((event, key) => {
     return (
-      <div style={CardCarousel.CARD_STYLE}>
+      <div style={CardCarousel.CARD_STYLE} key="card">
         <EventCard
           title={event.title}
-          date={event.date}
-          location={event.location} />
+          time={event.time}
+          location={event.location}
+          organizerEmail={event.organizerEmail}
+          picture={event.picture}
+          description={event.description}
+          registration={event.registration}
+          deadline={event.deadline}
+          eventType={event.eventType}
+          faculty={event.faculty}
+          onCampus={event.onCampus}
+          hasFood={event.hasFood}
+          isFree={event.isFree}
+          />
       </div>
     )
   });
