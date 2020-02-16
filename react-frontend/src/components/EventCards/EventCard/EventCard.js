@@ -49,6 +49,7 @@ const useStyles = makeStyles(theme => ({
 
 var icon_size = [15, 15];
 
+// Generates the html that displays an icon with its tooltip
 function create_icon(filename, tooltip) {
   return <Tooltip title={tooltip}>
     <img src={require(`../../../static/icons/faculties/${filename}.png`)}
@@ -67,6 +68,7 @@ export default function EventCard(props) {
 
   var icons = [];
 
+  // Add hard coded icons
   if (props.hasFood) {
     icons.push(
       create_icon("event_types/icon_food", "event has food")
@@ -84,7 +86,8 @@ export default function EventCard(props) {
   }
 
 
-  if (props.evenType == "social") {
+  // Add appropriate eventType icon
+  if (props.eventType == "social") {
     icons.push(
       create_icon("event_types/icon_social", "event is social")
     );
@@ -94,6 +97,7 @@ export default function EventCard(props) {
     );
   }
 
+  // Add appropriate faculty icon
   if (props.faculty == "chemistry") {
     icons.push(
       create_icon("faculty/" + "chemistry", "chemistry")
