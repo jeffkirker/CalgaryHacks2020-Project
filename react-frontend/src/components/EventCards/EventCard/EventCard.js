@@ -76,27 +76,75 @@ export default function EventCard(props) {
 
   // Add hard coded icons
   if (props.hasFood) {
-    icons.push(create_icon("event_types/icon_food", "event has food"));
+    icons.push(create_icon("event_types/icon_food", "Event has food"));
   }
   if (props.isFree) {
-    icons.push(create_icon("event_types/icon_free", "event is free"));
+    icons.push(create_icon("event_types/icon_free", "Event is free"));
   }
   if (props.onCampus) {
-    icons.push(create_icon("event_types/icon_on_campus", "event is on campus"));
+    icons.push(create_icon("event_types/icon_on_campus", "Event is on campus"));
   }
 
   // Add appropriate eventType icon
   if (props.eventType == "social") {
-    icons.push(create_icon("event_types/icon_social", "event is social"));
+    icons.push(create_icon("event_types/icon_social", "Social event"));
   } else if (props.eventType == "lecture") {
-    icons.push(create_icon("event_types/icon_lecture", "event is a lecture"));
+    icons.push(create_icon("event_types/icon_lecture", "Lecture event"));
+  } else if (props.eventType == "performance") {
+    icons.push(
+      create_icon("event_types/icon_performance", "Performance event")
+    );
   }
 
   // Add appropriate faculty icon
   if (props.faculty == "chemistry") {
-    icons.push(create_icon("faculty/" + "chemistry", "chemistry"));
+    icons.push(create_icon("faculty/" + "chemistry", "Faculty of chemistry"));
   } else if (props.faculty == "business") {
-    icons.push(create_icon("faculty/" + "business", "business"));
+    icons.push(create_icon("faculty/" + "business", "Faculty of business"));
+  } else if (props.faculty == "computer_science") {
+    icons.push(
+      create_icon(
+        "faculty/" + "computer_science",
+        "Faculty of computer_science"
+      )
+    );
+  } else if (props.faculty == "ecology") {
+    icons.push(create_icon("faculty/" + "ecology", "Faculty of ecology"));
+  } else if (props.faculty == "education") {
+    icons.push(create_icon("faculty/" + "education", "Faculty of education"));
+  } else if (props.faculty == "engineering") {
+    icons.push(
+      create_icon("faculty/" + "engineering", "Faculty of engineering")
+    );
+  } else if (props.faculty == "law") {
+    icons.push(create_icon("faculty/" + "law", "Faculty of law"));
+  } else if (props.faculty == "linguistics") {
+    icons.push(
+      create_icon("faculty/" + "linguistics", "Faculty of linguistics")
+    );
+  } else if (props.faculty == "literature") {
+    icons.push(create_icon("faculty/" + "literature", "Faculty of literature"));
+  } else if (props.faculty == "mathematics") {
+    icons.push(
+      create_icon("faculty/" + "mathematics", "Faculty of mathematics")
+    );
+  } else if (props.faculty == "medicine") {
+    icons.push(create_icon("faculty/" + "medicine", "Faculty of medicine"));
+  } else if (props.faculty == "music") {
+    icons.push(create_icon("faculty/" + "music", "Faculty of music"));
+  } else if (props.faculty == "nursing") {
+    icons.push(create_icon("faculty/" + "nursing", "Faculty of nursing"));
+  } else if (props.faculty == "pharmacy") {
+    icons.push(create_icon("faculty/" + "pharmacy", "Faculty of pharmacy"));
+  } else if (props.faculty == "physics") {
+    icons.push(create_icon("faculty/" + "physics", "Faculty of physics"));
+  } else if (props.faculty == "veterinary_medicine") {
+    icons.push(
+      create_icon(
+        "faculty/" + "veterinary_medicine",
+        "Faculty of veterinary_medicine"
+      )
+    );
   }
 
   return (
@@ -122,13 +170,10 @@ export default function EventCard(props) {
         </Typography>
       </CardContent>
       <CardActions>
-        {icons}
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
+        {icons}
         <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded
