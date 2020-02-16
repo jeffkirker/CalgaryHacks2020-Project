@@ -38,9 +38,3 @@
     transform: rotate(360deg);
   }
 }
-
-.submitButton {
-  position: 'absolute';
-  bottom: 16px;
-  /* right: 16px; */
-}
