@@ -16,31 +16,13 @@ import {API_URL} from "./../constants/APIurl";
 import EventFeed from "../components/EventFeed/EventFeed";
 import FeedView from "../components/FeedView/FeedView";
 
+import theme from './../theme/muiTheme';
 class App extends Component {
   constructor(props) {
     super(props);
     // Test repos with randomly generated data
     this.state = {
       events: [
-        {
-          title: "CalgaryHacks 2020",
-          key: "afndsj",
-          date: "test1",
-          location: "UofC"
-        },
-        {
-          title: "A Different Event",
-          key: "kfskdg",
-          date: "test2",
-          location: "UofC"
-        },
-        {title: "A Big Event", key: "afdagd", date: "test3", location: "UofC"},
-        {
-          title: "Jeremy's Birthday",
-          key: "akjhfa",
-          date: "test4",
-          location: "UofC"
-        }
       ],
       showCarousel: true,
       submitForm: false,
@@ -70,6 +52,7 @@ class App extends Component {
   }
 
   render() {
+    
     let show = <div></div>;
     let button = <div></div>;
     let dialog = <div></div>;
@@ -94,13 +77,13 @@ class App extends Component {
     return (
       <div className="App">
         <CssBaseline />
-        <AppBar position="static" color="secondary">
+        <AppBar position="static" color="secondary" style={{ backgroundColor: '#c10000' }}>
           <Toolbar>
             <img
               src={require("../static/images/logo.png")}
               style={{height: 40}}
             />
-            <Button color="inherit" style={{position: "fixed", right: 24}}>
+            <Button color="inherit" style={{position: "fixed", right: 24, }}>
               Filter
             </Button>
             {viewSwitch}

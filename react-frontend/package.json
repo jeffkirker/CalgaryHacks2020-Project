@@ -5,6 +5,12 @@
   "dependencies": {
     "@material-ui/core": "^4.9.2",
     "@material-ui/icons": "^4.9.1",
+    "@mui-treasury/components": "^0.4.0",
+    "@mui-treasury/layout": "^3.3.3",
+    "@mui-treasury/mockup": "^0.4.3",
+    "@mui-treasury/styles": "^0.4.0",
+    "@mui-treasury/styling": "^0.2.8",
+    "@mui-treasury/utils": "^0.3.9",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",

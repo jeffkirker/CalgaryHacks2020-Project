@@ -22,12 +22,25 @@ import { URL } from "../../../constants/APIurl";
 import Moment from "moment";
 import { spacing } from "@material-ui/system";
 
+import { useWideCardMediaStyles } from '@mui-treasury/styles/cardMedia/wide';
+import { useText01CardContentStyles } from '@mui-treasury/styles/cardContent/text01';
+import { useBouncyShadowStyles } from '@mui-treasury/styles/shadow/bouncy';
+import cx from 'clsx';
+
 const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: "100%",
-    maxHeight: "100%",
-    minWidth: "45vw",
-    minHeight: "60vh"
+    maxWidth: '40vw',
+    minWidth: '40vw',
+    margin: 'auto',
+    boxShadow: 'none',
+    borderRadius: 0,
+  },
+  content: {
+    padding: 24,
+  },
+  cta: {
+    marginTop: 24,
+    textTransform: 'initial',
   },
   media: {
     // height: 50,
@@ -51,11 +64,19 @@ const useStyles = makeStyles(theme => ({
   icon: {
     backgroundColor: red[500]
   },
-  registerButton :{
-    right: 8, 
-    position: 'fixed', 
-    borderRadius: 10
-  }
+  registerButton: {
+    right: 8,
+    position: 'fixed',
+    borderRadius: 10,
+    backgroundColor: '#ffd13a',
+    color: 'black',
+    fontSize: 15,
+    fontWeight: 'bold',
+    boxShadow: '10px',
+    "&:hover": {
+      background: "#ffff6f"
+    },
+  },
 }));
 
 var icon_size = [30, 30];
@@ -75,6 +96,9 @@ function create_icon(filename, tooltip) {
 
 export default function EventCard(props) {
   const classes = useStyles();
+  const mediaStyles = useWideCardMediaStyles();
+  const textCardContentStyles = useText01CardContentStyles();
+  const shadowStyles = useBouncyShadowStyles();
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -82,7 +106,8 @@ export default function EventCard(props) {
   };
 
   const registerClickHandler = () => {
-    
+    var win = window.open(props.registration, '_blank');
+    win.focus();
   }
 
   var icons = [];
@@ -104,7 +129,7 @@ export default function EventCard(props) {
   } else if (props.eventType == "lecture") {
     icons.push(create_icon("event_types/icon_lecture", "Lecture event"));
   } else if (props.eventType == "performance") {
-    icons.push( create_icon("event_types/icon_performance", "Performance event"));
+    icons.push(create_icon("event_types/icon_performance", "Performance event"));
   }
 
   // Add appropriate faculty icon
@@ -113,9 +138,9 @@ export default function EventCard(props) {
   } else if (props.faculty == "business") {
     icons.push(create_icon("faculties/" + "icon_business", "Faculty of business"));
   } else if (props.faculty == "computer_science") {
-    icons.push( create_icon( "faculties/" + "icon_computer_science",
-        "Faculty of computer_science"
-      )
+    icons.push(create_icon("faculties/" + "icon_computer_science",
+      "Faculty of computer_science"
+    )
     );
   } else if (props.faculty == "ecology") {
     icons.push(create_icon("faculties/" + "icon_ecology", "Faculty of ecology"));
@@ -157,14 +182,10 @@ export default function EventCard(props) {
   }
 
   return (
-    <Card className={classes.root}>
+    <Card className={cx(classes.root, shadowStyles.root)}>
       <CardHeader
-        action={
-          <IconButton aria-label="settings">
-            <MoreVertIcon />
-          </IconButton>
-        }
         title={props.title}
+        titleTypographyProps={{ variant: 'h6' }}
         subheader={Moment(props.time).format("dddd MMMM Do, h:mm A")}
       />
       <CardMedia
@@ -173,7 +194,7 @@ export default function EventCard(props) {
         image={URL + props.picture}
       />
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
+        <Typography variant="body2" color="textSecondary" component="p" noWrap="true">
           {props.description}
         </Typography>
       </CardContent>
