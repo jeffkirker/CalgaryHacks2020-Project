@@ -25,11 +25,14 @@ import {spacing} from "@material-ui/system";
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: "100%",
-    maxHeight: "100%"
+    maxHeight: "100%",
+    minWidth: "40vw"
   },
   media: {
-    paddingTop: "100%",
-    maxHeight: "100%"
+    // height: 50,
+    paddingTop: '56.25%', // 16:9
+    // paddingTop: '100%',
+    // maxHeight: '100%',
   },
   expand: {
     transform: "rotate(0deg)",
@@ -158,12 +161,11 @@ export default function EventCard(props) {
         title={props.title}
         subheader={Moment(props.time).format("dddd MMMM Do, h:mm A")}
       />
-
-      <CardMedia
-        className={classes.media}
-        title="Logo"
-        image={URL + props.picture}
-      />
+       <CardMedia 
+       className={classes.media}
+       title="Logo"
+       image={URL+props.picture}
+       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {props.description}
