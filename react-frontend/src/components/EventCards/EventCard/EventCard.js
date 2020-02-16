@@ -25,13 +25,14 @@ import {spacing} from "@material-ui/system";
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: "100%",
-    maxHeight: "100%"
+    maxHeight: "100%",
+    minWidth: "40vw"
   },
   media: {
     // height: 50,
-    //paddingTop: '56.25%', // 16:9
-    paddingTop: '100%',
-    maxHeight: '100%',
+    paddingTop: '56.25%', // 16:9
+    // paddingTop: '100%',
+    // maxHeight: '100%',
   },
   expand: {
     transform: "rotate(0deg)",
