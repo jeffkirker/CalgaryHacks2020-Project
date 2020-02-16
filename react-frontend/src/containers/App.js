@@ -84,6 +84,7 @@ class App extends Component {
               src={require("../static/images/logo.png")}
               style={{height: 40}}
             />
+            <Typography variant="h5">@UCalgary</Typography>
             <Button color="inherit" style={{position: "fixed", right: 120}}>
               Filter
             </Button>
