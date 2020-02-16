@@ -15,7 +15,7 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import axios from 'axios';
 
-const API_URL = "http://localhost:8000/addEvent"
+const API_URL = "http://204.209.76.234:8000/addEvent"
 const EVB_API_URL = "http://localhost:8000/getEventbrite"
 
 const useStyles = makeStyles(theme => ({
@@ -33,17 +33,17 @@ const useStyles = makeStyles(theme => ({
 export default function FormDialog() {
     const classes = useStyles();
 
-    var [evblink, setevb] = React.useState('');
-    var [open, setOpen] = React.useState(false);
-    var [url, setURL] = React.useState(null);
-    var [name, setName] = React.useState('');
-    var [date, setDate] = React.useState('2020-02-24 10:30:10');
-    var [locationstr, setLocation] = React.useState('');
-    var [email, setEmail] = React.useState('');
-    var [detailsstr, setdetails] = React.useState('');
-    var [onCampus, setCampus] = React.useState(true);
-    var [hasFood, setFood] = React.useState(true);
-    var [isFree, setFree] = React.useState(true);
+    const [evblink, setevb] = React.useState('');
+    const [open, setOpen] = React.useState(false);
+    const [url, setURL] = React.useState(null);
+    const [name, setName] = React.useState('');
+    const [date, setDate] = React.useState('2020-02-24 10:30:10');
+    const [locationstr, setLocation] = React.useState('');
+    const [email, setEmail] = React.useState('');
+    const [detailsstr, setdetails] = React.useState('');
+    const [onCampus, setCampus] = React.useState(true);
+    const [hasFood, setFood] = React.useState(true);
+    const [isFree, setFree] = React.useState(true);
 
     const evblinkChange = event => {
         setevb(event.target.value);
@@ -98,12 +98,13 @@ export default function FormDialog() {
     };
 
     const handleClose = () => {
+        console.log("1");
         handleSubmit();
         setOpen(false);
     };
 
     const handleSubmit = event => {
-        console.log("submitting");
+        console.log("2");
         var data = new FormData()
         data.append('title', name)
         data.append('time', date)
@@ -172,7 +173,6 @@ export default function FormDialog() {
                             required
                             margin="dense"
                             id="name"
-                            value={name}
                             label="Event Name"
                             type="string"
                             fullWidth
@@ -183,7 +183,6 @@ export default function FormDialog() {
                             fullWidth
                             id="date"
                             label="Event Date/Time"
-                            value={date}
                             type="datetime-local"
                             defaultValue="2020-02-24 10:30:10"
                             // className={classes.textField}
@@ -196,7 +195,6 @@ export default function FormDialog() {
                             required
                             margin="dense"
                             id="locationstr"
-                            value={locationstr}
                             label="Event Location"
                             type="string"
                             fullWidth
@@ -223,7 +221,6 @@ export default function FormDialog() {
                             autoFocus
                             margin="dense"
                             id="url"
-                            value={url}
                             label="Event URL"
                             type="url"
                             fullWidth
