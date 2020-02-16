@@ -91,57 +91,53 @@ export default function EventCard(props) {
   } else if (props.eventType == "lecture") {
     icons.push(create_icon("event_types/icon_lecture", "Lecture event"));
   } else if (props.eventType == "performance") {
-    icons.push(
-      create_icon("event_types/icon_performance", "Performance event")
-    );
+    icons.push( create_icon("event_types/icon_performance", "Performance event"));
   }
 
   // Add appropriate faculty icon
   if (props.faculty == "chemistry") {
-    icons.push(create_icon("faculty/" + "icon_chemistry", "Faculty of chemistry"));
+    icons.push(create_icon("faculties/icon_chemistry", "Faculty of chemistry"));
   } else if (props.faculty == "business") {
-    icons.push(create_icon("faculty/" + "icon_business", "Faculty of business"));
+    icons.push(create_icon("faculties/" + "icon_business", "Faculty of business"));
   } else if (props.faculty == "computer_science") {
-    icons.push(
-      create_icon(
-        "faculty/" + "icon_computer_science",
+    icons.push( create_icon( "faculties/" + "icon_computer_science",
         "Faculty of computer_science"
       )
     );
   } else if (props.faculty == "ecology") {
-    icons.push(create_icon("faculty/" + "icon_ecology", "Faculty of ecology"));
+    icons.push(create_icon("faculties/" + "icon_ecology", "Faculty of ecology"));
   } else if (props.faculty == "education") {
-    icons.push(create_icon("faculty/" + "icon_education", "Faculty of education"));
+    icons.push(create_icon("faculties/" + "icon_education", "Faculty of education"));
   } else if (props.faculty == "engineering") {
     icons.push(
-      create_icon("faculty/" + "icon_engineering", "Faculty of engineering")
+      create_icon("faculties/" + "icon_engineering", "Faculty of engineering")
     );
   } else if (props.faculty == "law") {
-    icons.push(create_icon("faculty/" + "icon_law", "Faculty of law"));
+    icons.push(create_icon("faculties/" + "icon_law", "Faculty of law"));
   } else if (props.faculty == "linguistics") {
     icons.push(
-      create_icon("faculty/" + "icon_linguistics", "Faculty of linguistics")
+      create_icon("faculties/" + "icon_linguistics", "Faculty of linguistics")
     );
   } else if (props.faculty == "literature") {
-    icons.push(create_icon("faculty/" + "icon_literature", "Faculty of literature"));
+    icons.push(create_icon("faculties/" + "icon_literature", "Faculty of literature"));
   } else if (props.faculty == "mathematics") {
     icons.push(
-      create_icon("faculty/" + "icon_mathematics", "Faculty of mathematics")
+      create_icon("faculties/" + "icon_mathematics", "Faculty of mathematics")
     );
   } else if (props.faculty == "medicine") {
-    icons.push(create_icon("faculty/" + "icon_medicine", "Faculty of medicine"));
+    icons.push(create_icon("faculties/" + "icon_medicine", "Faculty of medicine"));
   } else if (props.faculty == "music") {
-    icons.push(create_icon("faculty/" + "icon_music", "Faculty of music"));
+    icons.push(create_icon("faculties/" + "icon_music", "Faculty of music"));
   } else if (props.faculty == "nursing") {
-    icons.push(create_icon("faculty/" + "icon_nursing", "Faculty of nursing"));
+    icons.push(create_icon("faculties/" + "icon_nursing", "Faculty of nursing"));
   } else if (props.faculty == "pharmacy") {
-    icons.push(create_icon("faculty/" + "picon_harmacy", "Faculty of pharmacy"));
+    icons.push(create_icon("faculties/" + "picon_harmacy", "Faculty of pharmacy"));
   } else if (props.faculty == "physics") {
-    icons.push(create_icon("faculty/" + "icon_physics", "Faculty of physics"));
+    icons.push(create_icon("faculties/" + "icon_physics", "Faculty of physics"));
   } else if (props.faculty == "veterinary_medicine") {
     icons.push(
       create_icon(
-        "faculty/" + "icon_veterinary_medicine",
+        "faculties/" + "icon_veterinary_medicine",
         "Faculty of veterinary_medicine"
       )
     );
