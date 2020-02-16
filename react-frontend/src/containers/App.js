@@ -61,7 +61,7 @@ class App extends Component {
       button = <SubmissionForm />;
       viewSwitch = <Button
               color="inherit"
-              style={{position: "fixed", right: 96}}
+              style={{position: "fixed", right: 24, fontSize: 15, fontWeight: 'bold'}}
               onClick={() => this.feedView()}
             >List View</Button>
     }
@@ -69,7 +69,7 @@ class App extends Component {
       show = <FeedView events={this.state.events} />;
       viewSwitch = <Button
               color="inherit"
-              style={{position: "fixed", right: 96}}
+              style={{position: "fixed", right: 24, fontSize: 15, fontWeight: 'bold'}}
               onClick={() => this.swipeView()}
             >Swipe View</Button>
     }
@@ -82,9 +82,6 @@ class App extends Component {
               src={require("../static/images/logo.png")}
               style={{height: 40}}
             />
-            <Button color="inherit" style={{position: "fixed", right: 24}}>
-              Filter
-            </Button>
             {viewSwitch}
           </Toolbar>
         </AppBar>

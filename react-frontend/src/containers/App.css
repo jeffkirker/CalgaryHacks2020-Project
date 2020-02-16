@@ -4,20 +4,6 @@
 }
 
 
-.drawer: {
-  width: drawerWidth;
-  flexShrink: 0;
-}
-.drawerPaper {
-  width: drawerWidth;
-}
-.drawerHeader {
-  display: 'flex';
-  align-items: 'center';
-  justify-content: 'flex-start';
-}
-
-
 .content {
   flex-grow: 1;
   height: '100%';

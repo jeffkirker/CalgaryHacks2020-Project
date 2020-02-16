@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
     maxWidth: '40vw',
     minWidth: '40vw',
     margin: 'auto',
-    boxShadow: 'none',
+    boxShadow: '1px 1px 5px',
     borderRadius: 0,
   },
   content: {
@@ -209,17 +209,6 @@ export default function EventCard(props) {
           onClick={registerClickHandler}>
           Register
         </Button>
-        {/* <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-          style={{right:8, position: 'fixed'}}
-        > */}
-        {/* <ExpandMoreIcon />
-        </IconButton> */}
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit></Collapse>
     </Card>
