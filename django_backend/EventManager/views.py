@@ -3,8 +3,7 @@ from .models import *
 from .serializers import EventSerializer
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
-from datetime import datetime, timedelta
-# import json
+from datetime import datetime
 
 
 @api_view(["GET"])
