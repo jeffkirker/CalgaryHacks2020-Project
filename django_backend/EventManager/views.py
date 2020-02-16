@@ -34,20 +34,41 @@ def getEvents(request):
 @api_view(["POST"])
 def addEvent(request):
     jsonData = request.POST
+
+    if jsonData.get("deadline"):
+        deadline = datetime.strptime(jsonData.get("deadline"), "%Y-%m-%d %H:%M:%S")
+    else:
+        deadline = None
+    
+    if jsonData.get("onCampus"):
+        onCampus = bool(int(jsonData.get("onCampus")))
+    else:
+        onCampus = None
+
+    if jsonData.get("hasFood"):
+        hasFood = bool(int(jsonData.get("hasFood")))
+    else:
+        hasFood = None
+
+    if jsonData.get("isFree"):
+        isFree = bool(int(jsonData.get("isFree")))
+    else:
+        isFree = None
+
     event = Event(
         title=jsonData["title"],
-        time=datetime.strptime(jsonData["time"], "%Y-%m-%d %H:%M:%S%z"),
-        location=jsonData["location"],
+        time=datetime.strptime(jsonData["time"], "%Y-%m-%d %H:%M:%S"),
+        location=jsonData.get("location"),
 # TODO  # picture=
-        organizerEmail=jsonData["organizerEmail"],
-        description=jsonData["description"],
-        registration=jsonData["registration"],
-        deadline=datetime.strptime(jsonData["deadline"], "%Y-%m-%d %H:%M:%S%z"),
-        eventType=jsonData["eventType"],
-        faculty=jsonData["faculty"],
-        onCampus=bool(int(jsonData["onCampus"])),
-        hasFood=bool(int(jsonData["hasFood"])),
-        isFree=bool(int(jsonData["isFree"]))
+        organizerEmail=jsonData.get("organizerEmail"),
+        description=jsonData.get("description"),
+        registration=jsonData.get("registration"),
+        deadline=deadline,
+        eventType=jsonData.get("eventType"),
+        faculty=jsonData.get("faculty"),
+        onCampus=onCampus,
+        hasFood=hasFood,
+        isFree=isFree
     )
 
     try:
