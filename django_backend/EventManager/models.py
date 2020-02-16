@@ -2,11 +2,11 @@ from django.db import models
 
 class Events(models.Model):
     title = models.CharField(max_length=255)
-    time = models.DateTimeField()
-    location = models.CharField(max_length=255)
+    time = models.DateTimeField(null=True)
+    location = models.CharField(max_length=255, null=True)
 # TODO
     picture = models.ImageField(upload_to="images/", null=True) 
-    organizerEmail = models.EmailField()
+    organizerEmail = models.EmailField(null=True)
 
     description = models.TextField(null=True)
     registration = models.URLField(null=True)

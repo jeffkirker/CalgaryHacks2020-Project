@@ -4,6 +4,11 @@ from .serializers import EventsSerializer
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
 from datetime import datetime, timedelta
+
+# For testing form uploads
+from django.http import HttpResponseRedirect
+from django.shortcuts import render
+from .forms import UploadFileForm
 # import json
 
 
@@ -35,18 +40,20 @@ def addEvent(request):
     jsonData = request.POST
     event = Events(
         title=jsonData["title"],
-        time=datetime.strptime(jsonData["time"], "%Y-%m-%d %H:%M:%S%z"),
-        location=jsonData["location"],
-# TODO  # picture=
-        organizerEmail=jsonData["organizerEmail"],
-        description=jsonData["description"],
-        registration=jsonData["registration"],
-        deadline=datetime.strptime(jsonData["deadline"], "%Y-%m-%d %H:%M:%S%z"),
-        eventType=jsonData["eventType"],
-        faculty=jsonData["faculty"],
-        onCampus=bool(int(jsonData["onCampus"])),
-        hasFood=bool(int(jsonData["hasFood"])),
-        isFree=bool(int(jsonData["isFree"]))
+        #time=datetime.strptime(jsonData["time"], "%Y-%m-%d %H:%M:%S%z"),
+        #time=datetime.now(),
+        #location=jsonData["location"],
+        #TODO fix
+        picture = request.FILES['picture'],
+        #organizerEmail=jsonData["organizerEmail"],
+        #description=jsonData["description"],
+        #registration=jsonData["registration"],
+        #deadline=datetime.strptime(jsonData["deadline"], "%Y-%m-%d %H:%M:%S%z"),
+        #eventType=jsonData["eventType"],
+        #faculty=jsonData["faculty"],
+        #onCampus=bool(int(jsonData["onCampus"])),
+        #hasFood=bool(int(jsonData["hasFood"])),
+        #isFree=bool(int(jsonData["isFree"]))
     )
 
     try:
@@ -56,3 +63,23 @@ def addEvent(request):
         data = {'status': expression}
 
     return JsonResponse(data)
+
+
+
+
+def upload_file(request):
+    if request.method == 'POST':
+        jsonData=request.POST
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            # file is saved
+            instance = Events(
+                title=jsonData["title"],
+                picture=request.FILES['picture'])
+            instance.save()
+            #form.save()
+            return HttpResponseRedirect('/success/url/')
+    else:
+        form = Events()
+        form = UploadFileForm()
+    return render(request, 'upload.html', {'form': form})
