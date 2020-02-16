@@ -62,7 +62,7 @@ export default function EventCard(props) {
             <MoreVertIcon />
           </IconButton>
         }
-        title={props.name}
+        title={props.title}
         subheader={props.date}
       />
       <CardMedia

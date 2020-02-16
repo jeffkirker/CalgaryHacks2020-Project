@@ -3,6 +3,8 @@ import AppBar from '../components/AppBar/AppBar';
 import CardCarousel from '../components/CardCarousel/CardCarousel';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { Button } from '@material-ui/core';
+import SubmissionForm from './../components/SubmissionForm/SubmissionForm';
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -62,28 +64,26 @@ const useStyles = makeStyles(theme => ({
     fixedHeight: {
         height: 240,
     },
+
 }));
 
-export default function Dashboard(props) {
-    
+function RenderSubmissionForm() {
+    return (
+        <SubmissionForm />
+    )
+}
+
+function Dashboard(props) {
 
     const classes = useStyles();
 
     return (
+        
+                        <CardCarousel
+                            events={props.events} />
 
-        <div>
-            <div>
-                <AppBar />
-            </div>
-            <div>
-                <main className={classes.content}>
-                    {/* <div className={classes.appBarSpacer} /> */}
-                    <Container maxWidth="lg" className={classes.container}>
-                        <CardCarousel 
-                        events={props.events}/>
-                    </Container>
-                </main>
-            </div>
-        </div >
     )
 }
+
+
+export default Dashboard;
