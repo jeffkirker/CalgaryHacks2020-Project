@@ -1,63 +1,66 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Button from '@material-ui/core/Button';
-import Tooltip from '@material-ui/core/Tooltip';
-import SvgIcon from '@material-ui/icons/Favorite';
-import { URL } from "../../../constants/APIurl";
-import Moment from 'moment';
+import React from "react";
+import {makeStyles} from "@material-ui/core/styles";
+import clsx from "clsx";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Collapse from "@material-ui/core/Collapse";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import {red} from "@material-ui/core/colors";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ShareIcon from "@material-ui/icons/Share";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import Button from "@material-ui/core/Button";
+import Tooltip from "@material-ui/core/Tooltip";
+import SvgIcon from "@material-ui/icons/Favorite";
+import {URL} from "../../../constants/APIurl";
+import Moment from "moment";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: '100%',
-    maxHeight: '100%',
+    maxWidth: "100%",
+    maxHeight: "100%"
   },
   media: {
-
-    paddingTop: '100%',
-    maxHeight: '100%',
+    paddingTop: "100%",
+    maxHeight: "100%"
   },
   expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest
+    })
   },
   expandOpen: {
-    transform: 'rotate(180deg)',
+    transform: "rotate(180deg)"
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: red[500]
   },
   icon: {
-    backgroundColor: red[500],
-  },
+    backgroundColor: red[500]
+  }
 }));
 
 var icon_size = [15, 15];
 
 // Generates the html that displays an icon with its tooltip
 function create_icon(filename, tooltip) {
-  return <Tooltip title={tooltip}>
-    <img src={require(`../../../static/icons/${filename}.png`)}
-    height={icon_size[0]} width={icon_size[1]}
-    ></img>
-  </Tooltip>;
+  return (
+    <Tooltip title={tooltip}>
+      <img
+        src={require(`../../../static/icons/${filename}.png`)}
+        height={icon_size[0]}
+        width={icon_size[1]}
+      ></img>
+    </Tooltip>
+  );
 }
 
 export default function EventCard(props) {
@@ -72,42 +75,27 @@ export default function EventCard(props) {
 
   // Add hard coded icons
   if (props.hasFood) {
-    icons.push(
-      create_icon("event_types/icon_food", "event has food")
-    )
+    icons.push(create_icon("event_types/icon_food", "event has food"));
   }
   if (props.isFree) {
-    icons.push(
-      create_icon("event_types/icon_free", "event is free")
-    )
+    icons.push(create_icon("event_types/icon_free", "event is free"));
   }
   if (props.onCampus) {
-    icons.push(
-      create_icon("event_types/icon_on_campus", "event is on campus")
-    )
+    icons.push(create_icon("event_types/icon_on_campus", "event is on campus"));
   }
-
 
   // Add appropriate eventType icon
   if (props.eventType == "social") {
-    icons.push(
-      create_icon("event_types/icon_social", "event is social")
-    );
+    icons.push(create_icon("event_types/icon_social", "event is social"));
   } else if (props.eventType == "lecture") {
-    icons.push(
-      create_icon("event_types/icon_lecture", "event is a lecture")
-    );
+    icons.push(create_icon("event_types/icon_lecture", "event is a lecture"));
   }
 
   // Add appropriate faculty icon
   if (props.faculty == "chemistry") {
-    icons.push(
-      create_icon("faculty/" + "chemistry", "chemistry")
-    );
+    icons.push(create_icon("faculty/" + "chemistry", "chemistry"));
   } else if (props.faculty == "business") {
-    icons.push(
-      create_icon("faculty/" + "business", "business")
-    );
+    icons.push(create_icon("faculty/" + "business", "business"));
   }
 
   return (
@@ -119,17 +107,17 @@ export default function EventCard(props) {
           </IconButton>
         }
         title={props.title}
-        subheader={Moment(props.time).format('ddd, MMMM Do, hh:mm A')}
+        subheader={Moment(props.time).format("dddd MMMM Do, h:mm A")}
       />
 
-       <CardMedia 
-       className={classes.media}
-       title="Logo"
-       image={URL+props.picture}
-       />
+      <CardMedia
+        className={classes.media}
+        title="Logo"
+        image={URL + props.picture}
+      />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-        {props.description}
+          {props.description}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -142,7 +130,7 @@ export default function EventCard(props) {
         </IconButton>
         <IconButton
           className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
+            [classes.expandOpen]: expanded
           })}
           onClick={handleExpandClick}
           aria-expanded={expanded}
@@ -151,8 +139,7 @@ export default function EventCard(props) {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-      </Collapse>
+      <Collapse in={expanded} timeout="auto" unmountOnExit></Collapse>
     </Card>
   );
 }
