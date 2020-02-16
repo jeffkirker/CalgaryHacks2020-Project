@@ -81,6 +81,10 @@ export default function EventCard(props) {
     setExpanded(!expanded);
   };
 
+  const registerClickHandler = () => {
+    
+  }
+
   var icons = [];
 
   // Add hard coded icons
@@ -180,7 +184,8 @@ export default function EventCard(props) {
         {icons}
         <Button
           className={classes.registerButton}
-          variant="contained" color="secondary">
+          variant="contained" color="secondary"
+          onClick={registerClickHandler}>
           Register
         </Button>
         {/* <IconButton

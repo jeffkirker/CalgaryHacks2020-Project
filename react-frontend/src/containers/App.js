@@ -64,16 +64,32 @@ class App extends Component {
     this.setState({feedView: true});
   }
 
+  swipeView() {
+    this.setState({feedView: false});
+    this.setState({showCarousel: true})
+  }
+
   render() {
     let show = <div></div>;
     let button = <div></div>;
     let dialog = <div></div>;
+    let viewSwitch = <div></div>
     if (this.state.showCarousel) {
       show = <CardCarousel events={this.state.events} />;
       button = <SubmissionForm />;
+      viewSwitch = <Button
+              color="inherit"
+              style={{position: "fixed", right: 96}}
+              onClick={() => this.feedView()}
+            >List View</Button>
     }
     if (this.state.feedView) {
       show = <FeedView events={this.state.events} />;
+      viewSwitch = <Button
+              color="inherit"
+              style={{position: "fixed", right: 96}}
+              onClick={() => this.swipeView()}
+            >Swipe View</Button>
     }
     return (
       <div className="App">
@@ -84,16 +100,10 @@ class App extends Component {
               src={require("../static/images/logo.png")}
               style={{height: 40}}
             />
-            <Button color="inherit" style={{position: "fixed", right: 120}}>
+            <Button color="inherit" style={{position: "fixed", right: 24}}>
               Filter
             </Button>
-            <Button
-              color="inherit"
-              style={{position: "fixed", right: 24}}
-              onClick={() => this.feedView()}
-            >
-              List View
-            </Button>
+            {viewSwitch}
           </Toolbar>
         </AppBar>
         <main className={classes.content}>
