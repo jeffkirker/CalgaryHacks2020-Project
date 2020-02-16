@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import *
-from .serializers import EventsSerializer
+from .serializers import EventSerializer
 from rest_framework.decorators import api_view
 from django.http import JsonResponse
 from datetime import datetime, timedelta
@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 def getEvents(request):
     jsonData = request.GET
 
-    dataModel = Events.objects.filter(time__gt=datetime.now()).exclude(deadline__lt=datetime.now()).order_by("time")
+    dataModel = Event.objects.filter(time__gt=datetime.now()).exclude(deadline__lt=datetime.now()).order_by("time")
     
     if "skip" in jsonData.keys():
         dataModel = dataModel.all()[int(jsonData["skip"]):]
@@ -28,14 +28,14 @@ def getEvents(request):
     if "faculty" in jsonData.keys():
         dataModel = dataModel.filter(faculty=jsonData["faculty"])
 
-    serializer = EventsSerializer(dataModel, many=True)
+    serializer = EventSerializer(dataModel, many=True)
     return JsonResponse(serializer.data, safe=False)
 
 
 @api_view(["POST"])
 def addEvent(request):
     jsonData = request.POST
-    event = Events(
+    event = Event(
         title=jsonData["title"],
         time=datetime.strptime(jsonData["time"], "%Y-%m-%d %H:%M:%S%z"),
         location=jsonData["location"],

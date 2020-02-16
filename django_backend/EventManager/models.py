@@ -1,6 +1,6 @@
 from django.db import models
 
-class Events(models.Model):
+class Event(models.Model):
     title = models.CharField(max_length=255)
     time = models.DateTimeField()
     location = models.CharField(max_length=255)
