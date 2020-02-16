@@ -58,27 +58,19 @@ class App extends Component {
     if (this.state.showCarousel) {
       show = <CardCarousel events={this.state.events} />;
       button = <SubmissionForm />;
-      viewSwitch = (
-        <Button
-          color="inherit"
-          style={{position: "fixed", right: 96}}
-          onClick={() => this.feedView()}
-        >
-          List View
-        </Button>
-      );
+      viewSwitch = <Button
+              color="inherit"
+              style={{position: "fixed", right: 24, fontSize: 15, fontWeight: 'bold'}}
+              onClick={() => this.feedView()}
+            >List View</Button>
     }
     if (this.state.feedView) {
       show = <FeedView events={this.state.events} />;
-      viewSwitch = (
-        <Button
-          color="inherit"
-          style={{position: "fixed", right: 96}}
-          onClick={() => this.swipeView()}
-        >
-          Swipe View
-        </Button>
-      );
+      viewSwitch = <Button
+              color="inherit"
+              style={{position: "fixed", right: 24, fontSize: 15, fontWeight: 'bold'}}
+              onClick={() => this.swipeView()}
+            >Swipe View</Button>
     }
     return (
       <div className="App">
@@ -93,9 +85,6 @@ class App extends Component {
               src={require("../static/images/logo.png")}
               style={{height: 40}}
             />
-            <Button color="inherit" style={{position: "fixed", right: 24}}>
-              Filter
-            </Button>
             {viewSwitch}
           </Toolbar>
         </AppBar>

@@ -9,13 +9,15 @@ export default function FeedView(props) {
             <Box display="flex" p={1}>
                 <Box p={1} flexGrow={1}>
                     <EventFeed
-                    events={props.events} />
+                        events={props.events} />
 
-          </Box>
-                <Box p={1} >
+                </Box>
+                <Box p={1} style={{
+                    borderColor: '#fc4c2e', maxHeight: '26vh', marginTop:'24px'
+                }}>
                     <Filter />
-          </Box>
+                </Box>
             </Box>
-        </div>
+        </div >
     );
 }
