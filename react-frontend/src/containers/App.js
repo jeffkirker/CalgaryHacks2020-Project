@@ -37,8 +37,8 @@ class App extends Component {
   componentDidMount() {
     axios.get(API_URL)
       .then(res => {
-        const persons = res.data;
-        this.setState({ persons });
+        const events = res.data;
+        this.setState({ events });
       })
   }
 
