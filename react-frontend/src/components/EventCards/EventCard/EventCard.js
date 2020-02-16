@@ -23,16 +23,10 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '100%',
   },
   media: {
-<<<<<<< HEAD
-    height: 0,
-    paddingTop: '56.25%', // 16:9
-    // maxHeight: '10%'
-=======
     // height: 50,
     //paddingTop: '56.25%', // 16:9
     paddingTop: '100%',
     maxHeight: '100%',
->>>>>>> 711a3fb00896a4eefaa3c0e5687ae171066f384b
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -68,16 +62,6 @@ export default function EventCard(props) {
         title={props.title}
         subheader={props.time}
       />
-<<<<<<< HEAD
-      <CardMedia
-        className={classes.media}
-        image={require('../../../static/images/cards/calgaryhacks.png')}
-        title="Paella dish"
-      />
-      <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          CalgaryHacks 2020 is a sprint-like, competitive programming contest designed to promote creativity, collaboration, and innovative thinking.
-=======
        <CardMedia 
        className={classes.media}
        title="Logo"
@@ -86,7 +70,6 @@ export default function EventCard(props) {
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
         {props.description}
->>>>>>> 711a3fb00896a4eefaa3c0e5687ae171066f384b
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
