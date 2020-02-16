@@ -1,26 +1,31 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
-import { URL } from "../../../constants/APIurl";
+import React from "react";
+import {makeStyles} from "@material-ui/core/styles";
+import clsx from "clsx";
+import Card from "@material-ui/core/Card";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardMedia from "@material-ui/core/CardMedia";
+import CardContent from "@material-ui/core/CardContent";
+import CardActions from "@material-ui/core/CardActions";
+import Collapse from "@material-ui/core/Collapse";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import {red} from "@material-ui/core/colors";
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import ShareIcon from "@material-ui/icons/Share";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import Button from "@material-ui/core/Button";
+import Tooltip from "@material-ui/core/Tooltip";
+import SvgIcon from "@material-ui/icons/Favorite";
+import {URL} from "../../../constants/APIurl";
+import Moment from "moment";
+import {spacing} from "@material-ui/system";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    maxWidth: '100%',
-    maxHeight: '100%',
+    maxWidth: "100%",
+    maxHeight: "100%"
   },
   media: {
     // height: 50,
@@ -29,19 +34,37 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '100%',
   },
   expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
+    transform: "rotate(0deg)",
+    marginLeft: "auto",
+    transition: theme.transitions.create("transform", {
+      duration: theme.transitions.duration.shortest
+    })
   },
   expandOpen: {
-    transform: 'rotate(180deg)',
+    transform: "rotate(180deg)"
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: red[500]
   },
+  icon: {
+    backgroundColor: red[500]
+  }
 }));
+
+var icon_size = [30, 30];
+
+// Generates the html that displays an icon with its tooltip
+function create_icon(filename, tooltip) {
+  return (
+    <Tooltip title={tooltip}>
+      <img
+        src={require(`../../../static/icons/${filename}.png`)}
+        height={icon_size[0]}
+        width={icon_size[1]}
+      ></img>
+    </Tooltip>
+  );
+}
 
 export default function EventCard(props) {
   const classes = useStyles();
@@ -50,6 +73,81 @@ export default function EventCard(props) {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
+
+  var icons = [];
+
+  // Add hard coded icons
+  if (props.hasFood) {
+    icons.push(create_icon("event_types/icon_food", "Event has food"));
+  }
+  if (props.isFree) {
+    icons.push(create_icon("event_types/icon_free", "Event is free"));
+  }
+  if (props.onCampus) {
+    icons.push(create_icon("event_types/icon_on_campus", "Event is on campus"));
+  }
+
+  // Add appropriate eventType icon
+  if (props.eventType == "social") {
+    icons.push(create_icon("event_types/icon_social", "Social event"));
+  } else if (props.eventType == "lecture") {
+    icons.push(create_icon("event_types/icon_lecture", "Lecture event"));
+  } else if (props.eventType == "performance") {
+    icons.push(
+      create_icon("event_types/icon_performance", "Performance event")
+    );
+  }
+
+  // Add appropriate faculty icon
+  if (props.faculty == "chemistry") {
+    icons.push(create_icon("faculty/" + "icon_chemistry", "Faculty of chemistry"));
+  } else if (props.faculty == "business") {
+    icons.push(create_icon("faculty/" + "icon_business", "Faculty of business"));
+  } else if (props.faculty == "computer_science") {
+    icons.push(
+      create_icon(
+        "faculty/" + "icon_computer_science",
+        "Faculty of computer_science"
+      )
+    );
+  } else if (props.faculty == "ecology") {
+    icons.push(create_icon("faculty/" + "icon_ecology", "Faculty of ecology"));
+  } else if (props.faculty == "education") {
+    icons.push(create_icon("faculty/" + "icon_education", "Faculty of education"));
+  } else if (props.faculty == "engineering") {
+    icons.push(
+      create_icon("faculty/" + "icon_engineering", "Faculty of engineering")
+    );
+  } else if (props.faculty == "law") {
+    icons.push(create_icon("faculty/" + "icon_law", "Faculty of law"));
+  } else if (props.faculty == "linguistics") {
+    icons.push(
+      create_icon("faculty/" + "icon_linguistics", "Faculty of linguistics")
+    );
+  } else if (props.faculty == "literature") {
+    icons.push(create_icon("faculty/" + "icon_literature", "Faculty of literature"));
+  } else if (props.faculty == "mathematics") {
+    icons.push(
+      create_icon("faculty/" + "icon_mathematics", "Faculty of mathematics")
+    );
+  } else if (props.faculty == "medicine") {
+    icons.push(create_icon("faculty/" + "icon_medicine", "Faculty of medicine"));
+  } else if (props.faculty == "music") {
+    icons.push(create_icon("faculty/" + "icon_music", "Faculty of music"));
+  } else if (props.faculty == "nursing") {
+    icons.push(create_icon("faculty/" + "icon_nursing", "Faculty of nursing"));
+  } else if (props.faculty == "pharmacy") {
+    icons.push(create_icon("faculty/" + "picon_harmacy", "Faculty of pharmacy"));
+  } else if (props.faculty == "physics") {
+    icons.push(create_icon("faculty/" + "icon_physics", "Faculty of physics"));
+  } else if (props.faculty == "veterinary_medicine") {
+    icons.push(
+      create_icon(
+        "faculty/" + "icon_veterinary_medicine",
+        "Faculty of veterinary_medicine"
+      )
+    );
+  }
 
   return (
     <Card className={classes.root}>
@@ -60,7 +158,7 @@ export default function EventCard(props) {
           </IconButton>
         }
         title={props.title}
-        subheader={props.time}
+        subheader={Moment(props.time).format("dddd MMMM Do, h:mm A")}
       />
        <CardMedia 
        className={classes.media}
@@ -69,19 +167,17 @@ export default function EventCard(props) {
        />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-        {props.description}
+          {props.description}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
+      <CardActions>
         <IconButton aria-label="share">
           <ShareIcon />
         </IconButton>
+        {icons}
         <IconButton
           className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
+            [classes.expandOpen]: expanded
           })}
           onClick={handleExpandClick}
           aria-expanded={expanded}
@@ -90,8 +186,7 @@ export default function EventCard(props) {
           <ExpandMoreIcon />
         </IconButton>
       </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-      </Collapse>
+      <Collapse in={expanded} timeout="auto" unmountOnExit></Collapse>
     </Card>
   );
 }

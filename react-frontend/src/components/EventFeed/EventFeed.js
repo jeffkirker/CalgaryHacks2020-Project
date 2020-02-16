@@ -21,8 +21,18 @@ export default function EventFeed(props) {
             <div style={{ paddingBottom: 8 }}>
                 <EventFeedCard
                     title={event.title}
-                    date={event.date}
-                    location={event.location} />
+                    time={event.time}
+                    location={event.location}
+                    organizerEmail={event.organizerEmail}
+                    picture={event.picture}
+                    description={event.description}
+                    registration={event.registration}
+                    deadline={event.deadline}
+                    eventType={event.eventType}
+                    faculty={event.faculty}
+                    onCampus={event.onCampus}
+                    hasFood={event.hasFood}
+                    isFree={event.isFree} />
             </div>
         )
     });
