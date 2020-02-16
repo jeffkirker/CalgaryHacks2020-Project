@@ -20,6 +20,7 @@ import Tooltip from "@material-ui/core/Tooltip";
 import SvgIcon from "@material-ui/icons/Favorite";
 import {URL} from "../../../constants/APIurl";
 import Moment from "moment";
+import {spacing} from "@material-ui/system";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -48,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-var icon_size = [15, 15];
+var icon_size = [30, 30];
 
 // Generates the html that displays an icon with its tooltip
 function create_icon(filename, tooltip) {
@@ -120,7 +121,7 @@ export default function EventCard(props) {
           {props.description}
         </Typography>
       </CardContent>
-      <CardActions disableSpacing>
+      <CardActions>
         {icons}
         <IconButton aria-label="add to favorites">
           <FavoriteIcon />
