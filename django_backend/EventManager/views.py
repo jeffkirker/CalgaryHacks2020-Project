@@ -9,22 +9,24 @@ from datetime import datetime, timedelta
 
 @api_view(["GET"])
 def getEvents(request):
-    dataModel = Events.objects.filter(time__gt=datetime.now()).filter(deadline__gt=datetime.now()).order_by("time")
+    jsonData = request.GET
 
+    dataModel = Events.objects.filter(time__gt=datetime.now()).exclude(deadline__lt=datetime.now()).order_by("time")
+    
     if "skip" in jsonData.keys():
-        pass
+        dataModel = dataModel.all()[int(jsonData["skip"]):]
     if "bring" in jsonData.keys():
-        pass
-    if "skip" in jsonData.keys():
-        pass
-    if "skip" in jsonData.keys():
-        pass
-    if "skip" in jsonData.keys():
-        pass
-    if "skip" in jsonData.keys():
-        pass
-    if "skip" in jsonData.keys():
-        pass
+        dataModel = dataModel.all()[:int(jsonData["bring"])+1]
+    if "onCampus" in jsonData.keys():
+        dataModel = dataModel.filter(onCampus=bool(int(jsonData["onCampus"])))
+    if "hasFood" in jsonData.keys():
+        dataModel = dataModel.filter(hasFood=bool(int(jsonData["hasFood"])))
+    if "isFree" in jsonData.keys():
+        dataModel = dataModel.filter(isFree=bool(int(jsonData["isFree"])))
+    if "eventType" in jsonData.keys():
+        dataModel = dataModel.filter(eventType=jsonData["eventType"])
+    if "faculty" in jsonData.keys():
+        dataModel = dataModel.filter(faculty=jsonData["faculty"])
 
     serializer = EventsSerializer(dataModel, many=True)
     return JsonResponse(serializer.data, safe=False)
