@@ -205,8 +205,11 @@ export default function EventCard(props) {
       </CardContent>
       <CardActions>
         <IconButton aria-label="share">
-          <ShareIcon />
-          <ShareIcon onClick={() => this.handleCopy()} />
+          <ShareIcon
+            onClick={() => {
+              navigator.clipboard.writeText(props.registration);
+            }}
+          />
         </IconButton>
         {icons}
         <Button
