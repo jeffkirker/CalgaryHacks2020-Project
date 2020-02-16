@@ -41,7 +41,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function RecipeReviewCard() {
+export default function EventCard(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -62,12 +62,12 @@ export default function RecipeReviewCard() {
             <MoreVertIcon />
           </IconButton>
         }
-        title="CalgaryHacks 2020"
-        subheader="February 15, 2020"
+        title={props.name}
+        subheader={props.date}
       />
       <CardMedia
         className={classes.media}
-        image={require('../../static/images/cards/calgaryhacks.png')}
+        image={require('../../../static/images/cards/calgaryhacks.png')}
         title="Paella dish"
         />
       <CardContent>

@@ -64,7 +64,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function Dashboard() {
+export default function Dashboard(props) {
+    
+
     const classes = useStyles();
 
     return (
@@ -77,7 +79,8 @@ export default function Dashboard() {
                 <main className={classes.content}>
                     {/* <div className={classes.appBarSpacer} /> */}
                     <Container maxWidth="lg" className={classes.container}>
-                        <CardCarousel />
+                        <CardCarousel 
+                        events={props.events}/>
                     </Container>
                 </main>
             </div>
