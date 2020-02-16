@@ -48,7 +48,7 @@ export default function FormDialog() {
     return (
         <div>
             <Button variant="outlined" color="primary" onClick={handleClickOpen} style={{ bottom: 16, right: 16, position: 'absolute' }}>
-                Open form dialog
+                Submit An Event
       </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
                 <DialogTitle id="form-dialog-title">Submit An Event</DialogTitle>
@@ -102,7 +102,7 @@ export default function FormDialog() {
                         Cancel
           </Button>
                     <Button onClick={handleClose} color="primary">
-                        Subscribe
+                        Submit
           </Button>
                 </DialogActions>
             </Dialog>
