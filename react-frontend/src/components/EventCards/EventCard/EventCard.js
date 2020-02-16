@@ -200,7 +200,11 @@ export default function EventCard(props) {
       </CardContent>
       <CardActions>
         <IconButton aria-label="share">
-          <ShareIcon />
+          <ShareIcon
+            onClick={() => {
+              navigator.clipboard.writeText(props.registration);
+            }}
+          />
         </IconButton>
         {icons}
         <Button

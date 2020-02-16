@@ -16,14 +16,13 @@ import {API_URL} from "./../constants/APIurl";
 import EventFeed from "../components/EventFeed/EventFeed";
 import FeedView from "../components/FeedView/FeedView";
 
-
+import theme from "./../theme/muiTheme";
 class App extends Component {
   constructor(props) {
     super(props);
     // Test repos with randomly generated data
     this.state = {
-      events: [
-      ],
+      events: [],
       showCarousel: true,
       submitForm: false,
       feedView: false
@@ -48,14 +47,14 @@ class App extends Component {
 
   swipeView() {
     this.setState({feedView: false});
-    this.setState({showCarousel: true})
+    this.setState({showCarousel: true});
   }
 
   render() {
     let show = <div></div>;
     let button = <div></div>;
     let dialog = <div></div>;
-    let viewSwitch = <div></div>
+    let viewSwitch = <div></div>;
     if (this.state.showCarousel) {
       show = <CardCarousel events={this.state.events} />;
       button = <SubmissionForm />;
@@ -76,7 +75,11 @@ class App extends Component {
     return (
       <div className="App">
         <CssBaseline />
-        <AppBar position="static" color="secondary">
+        <AppBar
+          position="static"
+          color="secondary"
+          style={{backgroundColor: "#c10000"}}
+        >
           <Toolbar>
             <img
               src={require("../static/images/logo.png")}
