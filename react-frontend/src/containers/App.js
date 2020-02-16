@@ -7,6 +7,9 @@ import Dashboard from './Dashboard';
 import { Button } from '@material-ui/core';
 import AppBar from '../components/AppBar/AppBar';
 import SubmissionForm from './../components/SubmissionForm/SubmissionForm';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Container from '@material-ui/core/Container';
+
 
 class App extends Component {
   constructor(props) {
@@ -29,28 +32,27 @@ class App extends Component {
     this.setState({ submitForm: true });
   }
 
-
-
   render() {
     let show = <div></div>
-    let submitButton = <div></div>
+    let button = <div></div>
+    let dialog = <div></div>
     if (this.state.showCarousel) {
       show = <CardCarousel
         events={this.state.events} />
-      submitButton = <Button variant="outlined" color="primary" className={classes.submitButton} onClick={() => this.handleSubmitClick()}>
-        Submit Event
-          </Button>
+      button = <SubmissionForm />
     }
-    if (this.state.submitForm) {
-      show = <SubmissionForm />
-    }
+    
     return (
       <div className="App">
-        <div>
-          <AppBar />
-        </div>
-        {show}
-        {submitButton}
+        <CssBaseline />
+        <AppBar />
+        <main className={classes.content}>
+          <div />
+          <Container maxWidth="lg">
+            {show}
+            {button}
+          </Container>
+        </main>
       </div>
     );
   }

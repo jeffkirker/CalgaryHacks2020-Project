@@ -1,152 +1,111 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import { makeStyles } from '@material-ui/core/styles';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: 200,
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
     },
-  },
+    textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: 200,
+    },
 }));
 
-export default function FormPropsTextFields() {
-  const classes = useStyles();
+export default function FormDialog() {
+    const classes = useStyles();
 
-  return (
-    <form className={classes.root} noValidate autoComplete="off">
-      <div>
-        <TextField required id="standard-required" label="Required" defaultValue="Hello World" />
-        <TextField disabled id="standard-disabled" label="Disabled" defaultValue="Hello World" />
-        <TextField
-          id="standard-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-        />
-        <TextField
-          id="standard-read-only-input"
-          label="Read Only"
-          defaultValue="Hello World"
-          InputProps={{
-            readOnly: true,
-          }}
-        />
-        <TextField
-          id="standard-number"
-          label="Number"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-        />
-        <TextField id="standard-search" label="Search field" type="search" />
-        <TextField
-          id="standard-helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          helperText="Some important text"
-        />
-      </div>
-      <div>
-        <TextField
-          required
-          id="filled-required"
-          label="Required"
-          defaultValue="Hello World"
-          variant="filled"
-        />
-        <TextField
-          disabled
-          id="filled-disabled"
-          label="Disabled"
-          defaultValue="Hello World"
-          variant="filled"
-        />
-        <TextField
-          id="filled-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          variant="filled"
-        />
-        <TextField
-          id="filled-read-only-input"
-          label="Read Only"
-          defaultValue="Hello World"
-          InputProps={{
-            readOnly: true,
-          }}
-          variant="filled"
-        />
-        <TextField
-          id="filled-number"
-          label="Number"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="filled"
-        />
-        <TextField id="filled-search" label="Search field" type="search" variant="filled" />
-        <TextField
-          id="filled-helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          helperText="Some important text"
-          variant="filled"
-        />
-      </div>
-      <div>
-        <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          defaultValue="Hello World"
-          variant="outlined"
-        />
-        <TextField
-          disabled
-          id="outlined-disabled"
-          label="Disabled"
-          defaultValue="Hello World"
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-read-only-input"
-          label="Read Only"
-          defaultValue="Hello World"
-          InputProps={{
-            readOnly: true,
-          }}
-          variant="outlined"
-        />
-        <TextField
-          id="outlined-number"
-          label="Number"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-        />
-        <TextField id="outlined-search" label="Search field" type="search" variant="outlined" />
-        <TextField
-          id="outlined-helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          helperText="Some important text"
-          variant="outlined"
-        />
-      </div>
-    </form>
-  );
+    const [open, setOpen] = React.useState(false);
+
+    const [value, setValue] = React.useState('');
+
+    const handleChange = event => {
+        setValue(event.target.value);
+    };
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    return (
+        <div>
+            <Button variant="outlined" color="primary" onClick={handleClickOpen} style={{ bottom: 16, right: 16, position: 'absolute' }}>
+                Open form dialog
+      </Button>
+            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+                <DialogTitle id="form-dialog-title">Submit An Event</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Already have an Eventbrite URL?
+          </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="EventbriteUrl"
+                        label="Eventbrite URL"
+                        type="url"
+                        fullWidth
+                    />
+                    <TextField
+                        required
+                        margin="dense"
+                        id="eventName"
+                        label="Event Name"
+                        type="string"
+                        fullWidth
+                    />
+                    <TextField
+                        required
+                        fullWidth
+                        id="datetime-local"
+                        label="Event Date/Time"
+                        type="datetime-local"
+                        defaultValue="2020-02-24T10:30"
+                        // className={classes.textField}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
+                    <RadioGroup aria-label="location" name="location" value={value} onChange={handleChange}>
+                        <FormControlLabel value="on" control={<Radio />} label="On Campus" />
+                        <FormControlLabel value="off" control={<Radio />} label="Off Campus" />
+                    </RadioGroup>
+                    <TextField
+                        required
+                        margin="dense"
+                        id="eventLocation"
+                        label="Event Location"
+                        type="string"
+                        fullWidth
+                    />
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose} color="primary">
+                        Cancel
+          </Button>
+                    <Button onClick={handleClose} color="primary">
+                        Subscribe
+          </Button>
+                </DialogActions>
+            </Dialog>
+        </div>
+    );
 }

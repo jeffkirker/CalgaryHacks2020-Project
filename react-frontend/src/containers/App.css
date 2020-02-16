@@ -1,16 +1,18 @@
 .App {
-  text-align: center;
+  display: 'flex';
+  height: 100vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+/* .container {
+  padding-top: theme.spacing(4),
+  padding-bottom: theme.spacing(4),
+} */
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.content {
+  flex-grow: 1;
+  height: '100%';
+  overflow: 'auto';
+  margin: '10px';
 }
 
 .App-header {
@@ -40,5 +42,5 @@
 .submitButton {
   position: 'absolute';
   bottom: 16px;
-  right:16px;
+  /* right: 16px; */
 }
