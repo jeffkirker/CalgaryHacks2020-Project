@@ -1,5 +1,5 @@
 import React from "react";
-import {makeStyles} from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -10,7 +10,7 @@ import Collapse from "@material-ui/core/Collapse";
 import Avatar from "@material-ui/core/Avatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import {red} from "@material-ui/core/colors";
+import { red } from "@material-ui/core/colors";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ShareIcon from "@material-ui/icons/Share";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -18,15 +18,16 @@ import MoreVertIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import Tooltip from "@material-ui/core/Tooltip";
 import SvgIcon from "@material-ui/icons/Favorite";
-import {URL} from "../../../constants/APIurl";
+import { URL } from "../../../constants/APIurl";
 import Moment from "moment";
-import {spacing} from "@material-ui/system";
+import { spacing } from "@material-ui/system";
 
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: "100%",
     maxHeight: "100%",
-    minWidth: "40vw"
+    minWidth: "45vw",
+    minHeight: "60vh"
   },
   media: {
     // height: 50,
@@ -49,6 +50,11 @@ const useStyles = makeStyles(theme => ({
   },
   icon: {
     backgroundColor: red[500]
+  },
+  registerButton :{
+    right: 8, 
+    position: 'fixed', 
+    borderRadius: 10
   }
 }));
 
@@ -161,11 +167,11 @@ export default function EventCard(props) {
         title={props.title}
         subheader={Moment(props.time).format("dddd MMMM Do, h:mm A")}
       />
-       <CardMedia 
-       className={classes.media}
-       title="Logo"
-       image={URL+props.picture}
-       />
+      <CardMedia
+        className={classes.media}
+        title="Logo"
+        image={URL + props.picture}
+      />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {props.description}
@@ -176,16 +182,22 @@ export default function EventCard(props) {
           <ShareIcon />
         </IconButton>
         {icons}
-        <IconButton
+        <Button
+          className={classes.registerButton}
+          variant="contained" color="secondary">
+          Register
+        </Button>
+        {/* <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded
           })}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
+          style={{right:8, position: 'fixed'}}
+        > */}
+        {/* <ExpandMoreIcon />
+        </IconButton> */}
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit></Collapse>
     </Card>
