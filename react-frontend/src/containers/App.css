@@ -3,10 +3,20 @@
   height: 100vh;
 }
 
-/* .container {
-  padding-top: theme.spacing(4),
-  padding-bottom: theme.spacing(4),
-} */
+
+.drawer: {
+  width: drawerWidth;
+  flexShrink: 0;
+}
+.drawerPaper {
+  width: drawerWidth;
+}
+.drawerHeader {
+  display: 'flex';
+  align-items: 'center';
+  justify-content: 'flex-start';
+}
+
 
 .content {
   flex-grow: 1;
@@ -38,3 +48,4 @@
     transform: rotate(360deg);
   }
 }
+

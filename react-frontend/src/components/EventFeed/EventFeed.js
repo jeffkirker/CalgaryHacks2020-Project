@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import EventFeedCard from './EventFeedCard/EventFeedCard';
-import PlaneTicketCard from './../PlaneTicketCard/PlaneTicketCard';
-import BlogCard from '../BlogCard/BlogCard';
+
+
 
 export default function EventFeed(props) {
     // const filterFields = [
