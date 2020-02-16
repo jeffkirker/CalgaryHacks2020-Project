@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '100%',
   },
   media: {
-    // height: 50,
+    height: 0,
     paddingTop: '56.25%', // 16:9
     // maxHeight: '10%'
   },
@@ -69,10 +69,10 @@ export default function EventCard(props) {
         className={classes.media}
         image={require('../../../static/images/cards/calgaryhacks.png')}
         title="Paella dish"
-        />
+      />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-        CalgaryHacks 2020 is a sprint-like, competitive programming contest designed to promote creativity, collaboration, and innovative thinking.
+          CalgaryHacks 2020 is a sprint-like, competitive programming contest designed to promote creativity, collaboration, and innovative thinking.
         </Typography>
       </CardContent>
       <CardActions disableSpacing>

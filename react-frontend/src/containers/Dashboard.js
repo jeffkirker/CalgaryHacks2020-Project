@@ -78,9 +78,9 @@ function Dashboard(props) {
     const classes = useStyles();
 
     return (
-        
-                        <CardCarousel
-                            events={props.events} />
+
+        <CardCarousel
+            events={props.events} />
 
     )
 }
