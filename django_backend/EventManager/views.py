@@ -34,7 +34,7 @@ def getEvents(request):
 @api_view(["POST"])
 def addEvent(request):
     jsonData = request.POST
-
+    print(jsonData)
     if jsonData.get("deadline"):
         deadline = datetime.strptime(jsonData.get("deadline"), "%Y-%m-%d %H:%M:%S")
     else:
@@ -71,10 +71,10 @@ def addEvent(request):
         isFree=isFree
     )
 
-    try:
-        event.save()
-        data = {'status': 'OK'}
-    except expression:
-        data = {'status': expression}
+    # try:
+    event.save()
+    data = {'status': 'OK'}
+    # except expression as I:
+    #     data = {'status': I}
 
     return JsonResponse(data)
