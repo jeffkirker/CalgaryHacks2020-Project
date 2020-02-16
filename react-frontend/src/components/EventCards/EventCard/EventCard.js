@@ -25,11 +25,14 @@ import {spacing} from "@material-ui/system";
 const useStyles = makeStyles(theme => ({
   root: {
     maxWidth: "100%",
-    maxHeight: "100%"
+    maxHeight: "100%",
+    minWidth: "40vw"
   },
   media: {
-    paddingTop: "100%",
-    maxHeight: "100%"
+    // height: 50,
+    paddingTop: '56.25%', // 16:9
+    // paddingTop: '100%',
+    // maxHeight: '100%',
   },
   expand: {
     transform: "rotate(0deg)",
@@ -98,50 +101,50 @@ export default function EventCard(props) {
 
   // Add appropriate faculty icon
   if (props.faculty == "chemistry") {
-    icons.push(create_icon("faculty/" + "chemistry", "Faculty of chemistry"));
+    icons.push(create_icon("faculty/" + "icon_chemistry", "Faculty of chemistry"));
   } else if (props.faculty == "business") {
-    icons.push(create_icon("faculty/" + "business", "Faculty of business"));
+    icons.push(create_icon("faculty/" + "icon_business", "Faculty of business"));
   } else if (props.faculty == "computer_science") {
     icons.push(
       create_icon(
-        "faculty/" + "computer_science",
+        "faculty/" + "icon_computer_science",
         "Faculty of computer_science"
       )
     );
   } else if (props.faculty == "ecology") {
-    icons.push(create_icon("faculty/" + "ecology", "Faculty of ecology"));
+    icons.push(create_icon("faculty/" + "icon_ecology", "Faculty of ecology"));
   } else if (props.faculty == "education") {
-    icons.push(create_icon("faculty/" + "education", "Faculty of education"));
+    icons.push(create_icon("faculty/" + "icon_education", "Faculty of education"));
   } else if (props.faculty == "engineering") {
     icons.push(
-      create_icon("faculty/" + "engineering", "Faculty of engineering")
+      create_icon("faculty/" + "icon_engineering", "Faculty of engineering")
     );
   } else if (props.faculty == "law") {
-    icons.push(create_icon("faculty/" + "law", "Faculty of law"));
+    icons.push(create_icon("faculty/" + "icon_law", "Faculty of law"));
   } else if (props.faculty == "linguistics") {
     icons.push(
-      create_icon("faculty/" + "linguistics", "Faculty of linguistics")
+      create_icon("faculty/" + "icon_linguistics", "Faculty of linguistics")
     );
   } else if (props.faculty == "literature") {
-    icons.push(create_icon("faculty/" + "literature", "Faculty of literature"));
+    icons.push(create_icon("faculty/" + "icon_literature", "Faculty of literature"));
   } else if (props.faculty == "mathematics") {
     icons.push(
-      create_icon("faculty/" + "mathematics", "Faculty of mathematics")
+      create_icon("faculty/" + "icon_mathematics", "Faculty of mathematics")
     );
   } else if (props.faculty == "medicine") {
-    icons.push(create_icon("faculty/" + "medicine", "Faculty of medicine"));
+    icons.push(create_icon("faculty/" + "icon_medicine", "Faculty of medicine"));
   } else if (props.faculty == "music") {
-    icons.push(create_icon("faculty/" + "music", "Faculty of music"));
+    icons.push(create_icon("faculty/" + "icon_music", "Faculty of music"));
   } else if (props.faculty == "nursing") {
-    icons.push(create_icon("faculty/" + "nursing", "Faculty of nursing"));
+    icons.push(create_icon("faculty/" + "icon_nursing", "Faculty of nursing"));
   } else if (props.faculty == "pharmacy") {
-    icons.push(create_icon("faculty/" + "pharmacy", "Faculty of pharmacy"));
+    icons.push(create_icon("faculty/" + "picon_harmacy", "Faculty of pharmacy"));
   } else if (props.faculty == "physics") {
-    icons.push(create_icon("faculty/" + "physics", "Faculty of physics"));
+    icons.push(create_icon("faculty/" + "icon_physics", "Faculty of physics"));
   } else if (props.faculty == "veterinary_medicine") {
     icons.push(
       create_icon(
-        "faculty/" + "veterinary_medicine",
+        "faculty/" + "icon_veterinary_medicine",
         "Faculty of veterinary_medicine"
       )
     );
@@ -158,12 +161,11 @@ export default function EventCard(props) {
         title={props.title}
         subheader={Moment(props.time).format("dddd MMMM Do, h:mm A")}
       />
-
-      <CardMedia
-        className={classes.media}
-        title="Logo"
-        image={URL + props.picture}
-      />
+       <CardMedia 
+       className={classes.media}
+       title="Logo"
+       image={URL+props.picture}
+       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           {props.description}
