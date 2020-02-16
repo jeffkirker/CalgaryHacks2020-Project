@@ -181,11 +181,6 @@ export default function EventCard(props) {
     );
   }
 
-  handleCopy = e => {
-    e.preventDefault();
-    e.clipboardData.setData("text/plain", "Hello, world!");
-  };
-
   return (
     <Card className={cx(classes.root, shadowStyles.root)}>
       <CardHeader
