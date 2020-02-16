@@ -16,32 +16,13 @@ import {API_URL} from "./../constants/APIurl";
 import EventFeed from "../components/EventFeed/EventFeed";
 import FeedView from "../components/FeedView/FeedView";
 
+import theme from "./../theme/muiTheme";
 class App extends Component {
   constructor(props) {
     super(props);
     // Test repos with randomly generated data
     this.state = {
-      events: [
-        {
-          title: "CalgaryHacks 2020",
-          key: "afndsj",
-          date: "test1",
-          location: "UofC"
-        },
-        {
-          title: "A Different Event",
-          key: "kfskdg",
-          date: "test2",
-          location: "UofC"
-        },
-        {title: "A Big Event", key: "afdagd", date: "test3", location: "UofC"},
-        {
-          title: "Jeremy's Birthday",
-          key: "akjhfa",
-          date: "test4",
-          location: "UofC"
-        }
-      ],
+      events: [],
       showCarousel: true,
       submitForm: false,
       feedView: false
@@ -64,37 +45,58 @@ class App extends Component {
     this.setState({feedView: true});
   }
 
+  swipeView() {
+    this.setState({feedView: false});
+    this.setState({showCarousel: true});
+  }
+
   render() {
     let show = <div></div>;
     let button = <div></div>;
     let dialog = <div></div>;
+    let viewSwitch = <div></div>;
     if (this.state.showCarousel) {
       show = <CardCarousel events={this.state.events} />;
       button = <SubmissionForm />;
+      viewSwitch = (
+        <Button
+          color="inherit"
+          style={{position: "fixed", right: 96}}
+          onClick={() => this.feedView()}
+        >
+          List View
+        </Button>
+      );
     }
     if (this.state.feedView) {
       show = <FeedView events={this.state.events} />;
+      viewSwitch = (
+        <Button
+          color="inherit"
+          style={{position: "fixed", right: 96}}
+          onClick={() => this.swipeView()}
+        >
+          Swipe View
+        </Button>
+      );
     }
     return (
       <div className="App">
         <CssBaseline />
-        <AppBar position="static" color="secondary">
+        <AppBar
+          position="static"
+          color="secondary"
+          style={{backgroundColor: "#c10000"}}
+        >
           <Toolbar>
             <img
               src={require("../static/images/logo.png")}
               style={{height: 40}}
             />
-            <Typography variant="h5">@UCalgary</Typography>
-            <Button color="inherit" style={{position: "fixed", right: 120}}>
+            <Button color="inherit" style={{position: "fixed", right: 24}}>
               Filter
             </Button>
-            <Button
-              color="inherit"
-              style={{position: "fixed", right: 24}}
-              onClick={() => this.feedView()}
-            >
-              List View
-            </Button>
+            {viewSwitch}
           </Toolbar>
         </AppBar>
         <main className={classes.content}>

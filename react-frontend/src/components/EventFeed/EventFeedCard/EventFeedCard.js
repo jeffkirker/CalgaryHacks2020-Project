@@ -8,12 +8,15 @@ import Typography from '@material-ui/core/Typography';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
-import {URL} from "../../../constants/APIurl";
+import { URL } from "../../../constants/APIurl";
+import Moment from "moment";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
         maxWidth: '100%',
+        boxShadow: '1px 1px 5px',
     },
     details: {
         display: 'flex',
@@ -23,8 +26,8 @@ const useStyles = makeStyles(theme => ({
         flex: '1 0 auto',
     },
     cover: {
-        height: '20vh',
-        width: '20vw',
+        minHeight: '20vh',
+        minWidth: '20vw',
     },
     controls: {
         display: 'flex',
@@ -36,12 +39,27 @@ const useStyles = makeStyles(theme => ({
         height: 38,
         width: 38,
     },
+    registerButton: {
+        // right: 8,
+        // position: 'fixed',
+        borderRadius: 10,
+        backgroundColor: '#ffd13a',
+        color: 'black',
+        fontSize: 15,
+        fontWeight: 'bold',
+        "&:hover": {
+          background: "#ffff6f"
+        },
+      },
 }));
 
 export default function EventFeedCard(props) {
     const classes = useStyles();
     const theme = useTheme();
-
+    const registerClickHandler = () => {
+        var win = window.open(props.registration, '_blank');
+        win.focus();
+      }
     return (
         <Card className={classes.root}>
             <CardMedia
@@ -55,8 +73,17 @@ export default function EventFeedCard(props) {
                         {props.title}
                     </Typography>
                     <Typography variant="subtitle2" color="textSecondary">
-                        {props.time}
+                        {Moment(props.time).format("dddd MMMM Do, h:mm A")}
                     </Typography>
+                    <Typography variant="subtitle2" color="textPrimary">
+                        {props.description}
+                    </Typography>
+                    <Button
+                        className={classes.registerButton}
+                        variant="contained" color="secondary"
+                        onClick={registerClickHandler}>
+                        Register
+                    </Button>
                 </CardContent>
             </div>
 

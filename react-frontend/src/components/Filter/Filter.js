@@ -12,9 +12,9 @@ import Switch from '@material-ui/core/Switch';
 
 const Filter = () => {
     const [state, setState] = React.useState({
-        hasFood: true,
-        isFree: true,
-        onCampus: true,
+        hasFood: false,
+        isFree: false,
+        onCampus: false,
     });
 
     const handleChange = name => event => {
