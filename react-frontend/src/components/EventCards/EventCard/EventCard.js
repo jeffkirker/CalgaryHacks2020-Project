@@ -54,7 +54,7 @@ var icon_size = [15, 15];
 // Generates the html that displays an icon with its tooltip
 function create_icon(filename, tooltip) {
   return <Tooltip title={tooltip}>
-    <img src={require(`../../../static/icons/faculties/${filename}.png`)}
+    <img src={require(`../../../static/icons/${filename}.png`)}
     height={icon_size[0]} width={icon_size[1]}
     ></img>
   </Tooltip>;
