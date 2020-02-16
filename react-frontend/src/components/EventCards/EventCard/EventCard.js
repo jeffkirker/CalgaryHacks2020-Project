@@ -16,6 +16,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { URL } from "../../../constants/APIurl";
+import Moment from 'moment';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -60,7 +61,7 @@ export default function EventCard(props) {
           </IconButton>
         }
         title={props.title}
-        subheader={props.time}
+        subheader={Moment(props.time).format('ddd, MMMM Do, hh:mm A')}
       />
        <CardMedia 
        className={classes.media}
