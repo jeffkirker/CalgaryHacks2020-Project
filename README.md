@@ -1,4 +1,4 @@
-# CalgaryHacks2020-Event Connect
+# Calgary Hacks 2020 - Event Connect
 
 ## Inspiration
 Student life is busy. Between exams, assignments, and labs, we barely have enough time to keep up with our friends, let alone events happening around us (as cool as they may be). We don’t have time to dig through multiple event sites or the huge mess that is the bulletin boards. Finding the perfect **match** just isn’t worth the time it takes. We think Event Connect can change that.
