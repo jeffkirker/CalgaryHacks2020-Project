@@ -1,34 +1,34 @@
-import React, { Component } from 'react'
-import { StreamApp, NotificationDropdown, FlatFeed, Activity, LikeButton } from 'react-activity-feed';
-import 'react-activity-feed/dist/index.css';
+import React, { Component } from 'react';
+import EventFeedCard from './EventFeedCard/EventFeedCard';
 
-export default class EventFeed extends Component {
-    render() {
+
+export default function EventFeed(props) {
+    // const filterFields = [
+    //     { name: 'name', label: 'Name' },
+    //     { name: 'time', label: 'Date' },
+    //     { name: 'faculty', label: 'Faculty'},
+    //     { name: 'location', label: 'Location'},
+    //     { name: 'eventType', label: 'Event Type'},
+    //     { name: 'onCampus', label: 'On Campus', type: 'bool'},
+    //     { name: 'hasFood', label: 'Free Food', type: 'bool' },
+    //     { name: 'isFree', label: 'Free Entry', type: 'bool' },
+        
+
+    //   ];
+
+    const Events = props.events.map((event, key) => {
         return (
-            <StreamApp
-                apiKey="fpwesm5u2evu"
-                appId="64527"
-                token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZXhhbXBsZS11c2VyIn0.cM6zFlcQ68qP2LLz-Y6fPeNglfOuwB2aeBUaQild1wg"
-            >
-                <FlatFeed
-                    options={{ limit: 3, withRecentReactions: true }}
-                    Activity={(props) => (
-                        <Activity
-                            {...props}
-                            onClickHashtag={(word) => console.log(`clicked on ${word}`)}
-                            onClickMention={(word) => console.log(`clicked on ${word}`)}
-                            Footer={() => (
-                                <React.Fragment>
-                                    {/* <ActivityFooter {...props} /> */}
-                                    {/* <CommentList activityId={props.activity.id} /> */}
-                                </React.Fragment>
-                            )}
-                        />
-                    )}
-                />
-            </StreamApp>
-        );
-    }
+            <div style={{ paddingBottom: 8 }}>
+                <EventFeedCard
+                    title={event.title}
+                    date={event.date}
+                    location={event.location} />
+            </div>
+        )
+    });
+    return (
+        <div style={{ paddingTop: 24 }}>
+            {Events}
+        </div>
+    )
 }
-
-// ReactDOM.render(<App />, document.getElementById('root'));

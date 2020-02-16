@@ -14,12 +14,12 @@ import Typography from '@material-ui/core/Typography';
 import axios from 'axios';
 import { API_URL } from "./../constants/APIurl";
 import EventFeed from '../components/EventFeed/EventFeed';
+import FeedView from '../components/FeedView/FeedView';
 
 
 class App extends Component {
   constructor(props) {
     super(props);
-
     // Test repos with randomly generated data
     this.state = {
       events: [
@@ -37,8 +37,8 @@ class App extends Component {
   componentDidMount() {
     axios.get(API_URL)
       .then(res => {
-        const persons = res.data;
-        this.setState({ persons });
+        const events = res.data;
+        this.setState({ events });
       })
   }
 
@@ -49,7 +49,7 @@ class App extends Component {
 
   feedView() {
     console.log("feedview");
-    this.setState({feedView: true});
+    this.setState({ feedView: true });
   }
 
   render() {
@@ -62,20 +62,21 @@ class App extends Component {
       button = <SubmissionForm />
     }
     if (this.state.feedView) {
-      show = <EventFeed />
+      show = <FeedView
+        events={this.state.events} />
     }
     return (
       <div className="App">
         <CssBaseline />
         <AppBar position="static" color="secondary">
-        <Toolbar>
-          <Typography variant="h6">
-            Eventinder
+          <Toolbar>
+            <Typography variant="h6">
+              Eventinder
           </Typography>
-          <Button color="inherit" style={{position: "fixed", right: 120}}>Filter</Button>
-          <Button color="inherit" style={{position: "fixed", right: 24}} onClick={() => this.feedView()}>View all</Button>
-        </Toolbar>
-      </AppBar>
+            <Button color="inherit" style={{ position: "fixed", right: 120 }}>Filter</Button>
+            <Button color="inherit" style={{ position: "fixed", right: 24 }} onClick={() => this.feedView()}>List View</Button>
+          </Toolbar>
+        </AppBar>
         <main className={classes.content}>
           <div />
           <Container maxWidth="lg">
