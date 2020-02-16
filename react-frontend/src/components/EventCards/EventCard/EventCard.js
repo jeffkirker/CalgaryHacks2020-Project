@@ -181,6 +181,11 @@ export default function EventCard(props) {
     );
   }
 
+  handleCopy = e => {
+    e.preventDefault();
+    e.clipboardData.setData("text/plain", "Hello, world!");
+  };
+
   return (
     <Card className={cx(classes.root, shadowStyles.root)}>
       <CardHeader
@@ -201,6 +206,7 @@ export default function EventCard(props) {
       <CardActions>
         <IconButton aria-label="share">
           <ShareIcon />
+          <ShareIcon onClick={() => this.handleCopy()} />
         </IconButton>
         {icons}
         <Button
