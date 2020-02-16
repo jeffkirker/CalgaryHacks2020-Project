@@ -17,7 +17,7 @@ def getEventbrite(request):
     eventdic['title'] = event["name"]["text"]
     if "start" in event.keys():
         eventdic["time"] = datetime.strptime(
-            event["start"]["local"], '%Y-%m-%dT%H:%M:%SZ')
+            event["start"]["local"], '%Y-%m-%dT%H:%M:%S')
     else:
         eventdic["time"] = None
     try:

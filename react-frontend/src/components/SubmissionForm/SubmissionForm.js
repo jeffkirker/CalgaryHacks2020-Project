@@ -16,6 +16,8 @@ import FormLabel from '@material-ui/core/FormLabel';
 import axios from 'axios';
 
 const API_URL = "http://localhost:8000/addEvent"
+const EVB_API_URL = "http://localhost:8000/getEventbrite"
+
 const useStyles = makeStyles(theme => ({
     container: {
         display: 'flex',
@@ -31,27 +33,32 @@ const useStyles = makeStyles(theme => ({
 export default function FormDialog() {
     const classes = useStyles();
 
-    const [open, setOpen] = React.useState(false);
-    const [url, setURL] = React.useState(null);
-    const [name, setName] = React.useState('');
-    const [date, setDate] = React.useState('2020-02-24 10:30:10');
-    const [location, setLocation] = React.useState('');
-    const [email, setEmail] = React.useState('');
-    const [onCampus, setCampus] = React.useState(true);
-    const [hasFood, setFood] = React.useState(true);
-    const [isFree, setFree] = React.useState(true);
+    var [evblink, setevb] = React.useState('');
+    var [open, setOpen] = React.useState(false);
+    var [url, setURL] = React.useState(null);
+    var [name, setName] = React.useState('');
+    var [date, setDate] = React.useState('2020-02-24 10:30:10');
+    var [locationstr, setLocation] = React.useState('');
+    var [email, setEmail] = React.useState('');
+    var [detailsstr, setdetails] = React.useState('');
+    var [onCampus, setCampus] = React.useState(true);
+    var [hasFood, setFood] = React.useState(true);
+    var [isFree, setFree] = React.useState(true);
 
+    const evblinkChange = event => {
+        setevb(event.target.value);
+    };
+    const handledetailsChange = event => {
+        setdetails(event.target.value);
+    };
     const handleChangeCampus = event => {
         setCampus(event.target.value);
-        console.log("campus ", onCampus)
     };
     const handleChangeFood = event => {
         setFood(event.target.value);
-        console.log("food ", hasFood)
     };
     const handleChangeFree = event => {
         setFree(event.target.value);
-        console.log("free ", isFree)
     };
     const handleNameChange = event => {
         setName(event.target.value);
@@ -73,6 +80,23 @@ export default function FormDialog() {
         setOpen(true);
     };
 
+    const loadevb = () => {
+        fetch(EVB_API_URL+"?url="+evblink)
+        .then(function (response) {
+            const r = response.json();
+            console.log(r)
+            // name = r["title"]
+            // locationstr = r["location"]
+            // date = r["time"]
+            // url = r["registration"]
+
+            // this.forceUpdate()
+
+        });
+
+
+    };
+
     const handleClose = () => {
         handleSubmit();
         setOpen(false);
@@ -83,7 +107,7 @@ export default function FormDialog() {
         var data = new FormData()
         data.append('title', name)
         data.append('time', date)
-        data.append('location', location)
+        data.append('location', locationstr)
         data.append('organizerEmail', email)
         data.append('registration', url)
 
@@ -113,9 +137,6 @@ export default function FormDialog() {
 
         fetch(API_URL, {
             method: 'POST',
-            // headers: {
-            //     // 'Content-Type': 'application/json',
-            // },
             body: data
         }).then(function (response) {
             return response.json();
@@ -133,11 +154,25 @@ export default function FormDialog() {
                     <DialogContent>
                         <DialogContentText>
                             Already have an Eventbrite URL?
-          </DialogContentText>
+                            <div>
+                                <TextField
+                                    margin="dense"
+                                    id="evblink"
+                                    label="EventBrite URL"
+                                    type="string"
+                                    fullWidth
+                                    onChange={evblinkChange}
+                                />
+                                <Button type="submit" onClick={loadevb} color="primary">
+                                    Load Event
+                                </Button>
+                            </div>
+                        </DialogContentText>
                         <TextField
                             required
                             margin="dense"
-                            id="eventName"
+                            id="name"
+                            value={name}
                             label="Event Name"
                             type="string"
                             fullWidth
@@ -146,8 +181,9 @@ export default function FormDialog() {
                         <TextField
                             required
                             fullWidth
-                            id="datetime-local"
+                            id="date"
                             label="Event Date/Time"
+                            value={date}
                             type="datetime-local"
                             defaultValue="2020-02-24 10:30:10"
                             // className={classes.textField}
@@ -159,7 +195,8 @@ export default function FormDialog() {
                         <TextField
                             required
                             margin="dense"
-                            id="location"
+                            id="locationstr"
+                            value={locationstr}
                             label="Event Location"
                             type="string"
                             fullWidth
@@ -175,9 +212,18 @@ export default function FormDialog() {
                             onChange={handleEmailChange}
                         />
                         <TextField
+                            margin="dense"
+                            id="details"
+                            label="Event Description"
+                            type="string"
+                            fullWidth
+                            onChange={handledetailsChange}
+                        />
+                        <TextField
                             autoFocus
                             margin="dense"
-                            id="registration"
+                            id="url"
+                            value={url}
                             label="Event URL"
                             type="url"
                             fullWidth
