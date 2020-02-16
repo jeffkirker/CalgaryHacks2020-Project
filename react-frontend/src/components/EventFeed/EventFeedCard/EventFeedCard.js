@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
+import {URL} from "../../../constants/APIurl";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -22,7 +23,8 @@ const useStyles = makeStyles(theme => ({
         flex: '1 0 auto',
     },
     cover: {
-        width: 151,
+        height: '20vh',
+        width: '20vw',
     },
     controls: {
         display: 'flex',
@@ -44,8 +46,8 @@ export default function EventFeedCard(props) {
         <Card className={classes.root}>
             <CardMedia
                 className={classes.cover}
-                image={require('../../../static/images/cards/calgaryhacks.png')}
-                title="Live from space album cover"
+                title="Logo"
+                image={URL + props.picture}
             />
             <div className={classes.details}>
                 <CardContent className={classes.content}>
@@ -53,7 +55,7 @@ export default function EventFeedCard(props) {
                         {props.title}
                     </Typography>
                     <Typography variant="subtitle2" color="textSecondary">
-                        {props.date}
+                        {props.time}
                     </Typography>
                 </CardContent>
             </div>
