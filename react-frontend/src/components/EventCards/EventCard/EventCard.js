@@ -15,6 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import { URL } from "../../../constants/APIurl";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -22,9 +23,16 @@ const useStyles = makeStyles(theme => ({
     maxHeight: '100%',
   },
   media: {
+<<<<<<< HEAD
     height: 0,
     paddingTop: '56.25%', // 16:9
     // maxHeight: '10%'
+=======
+    // height: 50,
+    //paddingTop: '56.25%', // 16:9
+    paddingTop: '100%',
+    maxHeight: '100%',
+>>>>>>> 711a3fb00896a4eefaa3c0e5687ae171066f384b
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -52,19 +60,15 @@ export default function EventCard(props) {
   return (
     <Card className={classes.root}>
       <CardHeader
-        avatar={
-          <Avatar aria-label="recipe" className={classes.avatar}>
-            R
-          </Avatar>
-        }
         action={
           <IconButton aria-label="settings">
             <MoreVertIcon />
           </IconButton>
         }
         title={props.title}
-        subheader={props.date}
+        subheader={props.time}
       />
+<<<<<<< HEAD
       <CardMedia
         className={classes.media}
         image={require('../../../static/images/cards/calgaryhacks.png')}
@@ -73,6 +77,16 @@ export default function EventCard(props) {
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
           CalgaryHacks 2020 is a sprint-like, competitive programming contest designed to promote creativity, collaboration, and innovative thinking.
+=======
+       <CardMedia 
+       className={classes.media}
+       title="Logo"
+       image={URL+props.picture}
+       />
+      <CardContent>
+        <Typography variant="body2" color="textSecondary" component="p">
+        {props.description}
+>>>>>>> 711a3fb00896a4eefaa3c0e5687ae171066f384b
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
